@@ -6,8 +6,8 @@ class Application
     req = Rack::Response.new(env)
 
     if req.path.match(/items/)
-      item_name = req.path.split("/items").last
-      if item_name = @@items.find{|i| i.name.downcase == item_name.downcase}
+      item = req.path.split("/items").last
+      if item = @@items.find{|i| i.name.downcase == item_name.downcase}
         resp.write item.price
       else
         rep.write "Item not found"
